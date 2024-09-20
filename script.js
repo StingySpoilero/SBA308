@@ -36,22 +36,31 @@ const LearnerSubmissions = [
         learner_id: 22,
         assignment_id: 1,
         submission: {
-            submmited_at: "2024-08-21",
-            score: 150
-        },
+            submitted_at: "2024-08-21",
+            score: 132
+        }
+    },
         {
             learner_id: 22,
             assignment_id: 2,
             submission: {
-                submmited_at: "2024-09-17",
-                score: 132
+                submitted_at: "2024-09-17",
+                score: 150
+            }
+        },
+        {
+            learner_id: 22,
+            assignment_id: 3,
+            submission: {
+                submitted_at: "2024-10-06",
+                score: 197
             }
         },
         {
             learner_id: 78,
             assignment_id: 1,
             submission: {
-                submmited_at: "2024-08-23",
+                submitted_at: "2024-08-23",
                 score: 115
             }
         },
@@ -59,10 +68,31 @@ const LearnerSubmissions = [
             learner_id: 78,
             assignment_id: 2,
             submission: {
-                submmited_at: "2024-09-19",
+                submitted_at: "2024-09-19",
                 score: 121
             }
         },
-    }
-]
+];
 
+function getLearnerData(course, avg, submissions) {
+let result = [
+    {
+    id: 22,
+    avg: 0.94, // (132 + 150) / (150/150)
+    1: 0.88, // 132 / 150
+    2: 1.0 // 150 / 150
+    },
+    {
+        id: 78,
+        avg: 0.97, // (115 + 150) / (121 + 150)
+        1: 0.76, // 115 / 150
+        2: 0.80 // 121 / 150
+    }
+];
+
+    return result;
+}
+
+const result = getLearnerData(courseInfo, assignmentGroup, LearnerSubmissions);
+
+console.log(result);
