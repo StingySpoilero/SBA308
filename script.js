@@ -104,15 +104,53 @@ for (let i = 0; i < assignmentGroup.assignments.length; i++) {
     }
 }
 //Function is needed to get the Learner Data, also included a try
-function getLearnerData(courseInfo, assignmentGroup, submissions)
+
+    function getLearnerData(courseInfo, assignmentGroup, submissions);
 try {
     validateData(courseInfo, assignmentGroup);
 
-    let results = {} //Results will go here
-}
-    return result;
-}
 
+}
+submissions.forEach (submission => {
+    try {
+        const { learner_id, assignment_id, submission: { submitted_at, score } } = submission;
+        // Process each submission here
+    } catch (error) {
+        console.error("Error processing submission:", error);
+    }
+});
+if (typeof score !== 'number' || typeof assignment.points_possible !== 'number') {
+    throw new Error("Score and points possible must be numbers.");
+}
+if (assignment.points_possible <= 0) {
+    throw new Error("Points possible must be greater than zero.");
+}
+switch (true) {
+    case typeof score !== 'number':
+        throw new Error("Score must be a number.");
+    case typeof assignment.points_possible !== 'number':
+        throw new Error("Points possible must be a number.");
+    case assignment.points_possible <= 0:
+        throw new Error("Points possible must be greater than zero.");
+    default:
+        break;
+}
+// Record the score for this assignment as a percentage
+results[learner_id].assignments[assignment_id] = (finalScore / assignment.points_possible);
+results[learner_id].earnedPoints += finalScore; // Total points earned
+results[learner_id].totalPoints += assignment.points_possible; // Total points possible
+};
+// Calculate average score for each learner
+for (const learnerId in results) {
+    const { earnedPoints, totalPoints } = results[learnerId];
+    results[learnerId].avg = totalPoints > 0 ? (earnedPoints / totalPoints) : 0; // Average as a decimal
+}
+return Object.array(results); 
+// Return the results as an array
+let results {
+    console.log (Error, error.message);
+    return []; // Return an empty array in case of error
+};
 const result = getLearnerData(courseInfo, assignmentGroup, LearnerSubmissions);
 
 console.log(result);
