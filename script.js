@@ -1,6 +1,6 @@
 const courseInfo = {
-    "id": number,
-    "name": string,
+    "id": 1,
+    "name": Reading,
 }
 const assignmentGroup = {
     "id": number,
@@ -11,6 +11,19 @@ const assignmentGroup = {
   "group_weight": number,
   "assignments": [AssignmentInfo],
 }
+const AssignmentInfo
+{
+    "id": number,
+    "name": string,
+    // the due date for the assignment
+    "due_at": Date string,
+    // the maximum points possible for the assignment
+    "points_possible": number,
+  }
 const LearnerSubmissions = {
-    
+    "learner_id": number,
+    "assignment_id": number,
+    "submission": {
+      "submitted_at": Date string,
+      "score": number
     }
