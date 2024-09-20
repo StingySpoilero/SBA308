@@ -104,19 +104,18 @@ for (let i = 0; i < assignmentGroup.assignments.length; i++) {
     }
 }
 //Function is needed to get the Learner Data, also included a try
-
-    function getLearnerData(courseInfo, assignmentGroup, submissions);
+{
+    function getLearnerData(courseInfo: any, assignmentGroup: any, submissions: any): any;
 try {
     validateData(courseInfo, assignmentGroup);
 
-
 }
-submissions.forEach (submission => {
+    submissions.forEach (submission => {
     try {
         const { learner_id, assignment_id, submission: { submitted_at, score } } = submission;
         // Process each submission here
     } catch (error) {
-        console.error("Error processing submission:", error);
+        console.error("Error:", error.message);;
     }
 });
 if (typeof score !== 'number' || typeof assignment.points_possible !== 'number') {
@@ -136,7 +135,7 @@ switch (true) {
         break;
 }
 // Record the score for this assignment as a percentage
-results[learner_id].assignments[assignment_id] = (finalScore / assignment.points_possible);
+    result[learner_id].assignments[assignment_id] = (finalScore / assignment.points_possible);
 results[learner_id].earnedPoints += finalScore; // Total points earned
 results[learner_id].totalPoints += assignment.points_possible; // Total points possible
 };
@@ -144,13 +143,9 @@ results[learner_id].totalPoints += assignment.points_possible; // Total points p
 for (const learnerId in results) {
     const { earnedPoints, totalPoints } = results[learnerId];
     results[learnerId].avg = totalPoints > 0 ? (earnedPoints / totalPoints) : 0; // Average as a decimal
+};
 }
 return Object.array(results); 
-// Return the results as an array
-let results {
-    console.log (Error, error.message);
-    return []; // Return an empty array in case of error
-};
 const result = getLearnerData(courseInfo, assignmentGroup, LearnerSubmissions);
 
 console.log(result);
