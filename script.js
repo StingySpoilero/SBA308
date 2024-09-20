@@ -89,7 +89,27 @@ let result = [
         2: 0.80 // 121 / 150
     }
 ];
+//Function is needed to validate the data
+function validateData(courseInfo, assignmentGroup) {
+    (function() {
+        if (assignmentGroup.course_id !== courseInfo.id) {
+            throw new Error("Assignment group does not belong to the course.");
+        }
+    })();
 
+}
+for (let i = 0; i < assignmentGroup.assignments.length; i++) {
+    if (assignmentGroup.assignments[i].points_possible <= 0) {
+        throw new Error("Points possible must be greater than zero.");
+    }
+}
+//Function is needed to get the Learner Data, also included a try
+function getLearnerData(courseInfo, assignmentGroup, submissions)
+try {
+    validateData(courseInfo, assignmentGroup);
+
+    let results = {} //Results will go here
+}
     return result;
 }
 
